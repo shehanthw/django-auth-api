@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h7@8qu-2os^@xmoc&ln6fb=bw@r9rnv7@f@h^gw74@6***x55q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost']
 
 
 # Application definition
@@ -79,10 +79,15 @@ WSGI_APPLICATION = 'auth.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'CLIENT': {
+            'host': 'mongodb+srv://shehan:12345@testenv.7jj6x.mongodb.net/auth-data',
+            'authMechanism': 'SCRAM-SHA-1',
+        },
+        'CONN_MAX_AGE': 0,
     }
 }
+
 
 
 # Password validation
